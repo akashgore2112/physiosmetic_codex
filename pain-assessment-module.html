@@ -15,30 +15,21 @@
   <body>
     <div id="pain-assessment"></div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
-      integrity="sha384-0jJ1m0An0MhN8d+5ZzlGdLylUKzvzV2sn9u0Jqeq0VBiP7T0B6iyJXAW7xIDZ7rL"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
-      integrity="sha384-t4yJlZfQw3jI2iDxWB/5KShKfGgIK8nNAh7U4pAPtO6wQDCclhxH9NlY2IuW1FQG"
-      crossorigin="anonymous"
-    ></script>
     <script>
-      // Temporary local testing key for AI module (replace with your real key locally)
-      if (!window.PAIN_ASSESSMENT_OPENAI_KEY) {
-        const localTestingKey = "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";
-        if (localTestingKey && !localTestingKey.includes("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")) {
-          window.PAIN_ASSESSMENT_OPENAI_KEY = localTestingKey;
-          console.log("[PainAssessment] OpenAI API key successfully injected!");
-        } else {
-          console.warn(
-            "[PainAssessment] No OpenAI API key provided. Set window.PAIN_ASSESSMENT_OPENAI_KEY before loading main.js for local testing."
-          );
-        }
-      }
+      // Inject OpenAI API Key before any modules execute
+      window.PAIN_ASSESSMENT_OPENAI_KEY = "sk-xxxxxx_YOUR_API_KEY_HERE_xxxxxx";
+      console.log(
+        "[PainAssessment] ✅ OpenAI API key successfully injected before main.js load."
+      );
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      console.log("[PainAssessment] Chart.js & GSAP loaded successfully ✅");
+    </script>
+    <script type="module" src="ai.js"></script>
+    <script type="module" src="core.js"></script>
+    <script type="module" src="ui.js"></script>
     <script type="module" src="main.js"></script>
   </body>
 </html>
